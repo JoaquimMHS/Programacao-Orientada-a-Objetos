@@ -9,30 +9,27 @@ public class LojaOnline {
         String descricao;
         double valor;
 
-        Pedido Cellphone = new Pedido("Galaxy S25U", 8000);
-        Pedido Computer = new Pedido("Acer Nitro 5", 5000);
-        Pedido   TV = new Pedido("Smart TV 4K 55", 4500);
-        Pedido Tablet = new Pedido("Tab S10", 3000);
         do {
-            System.out.print("Deseja cadastrar um novo pedido? ");
+            System.out.print("Deseja cadastrar um novo pedido? (s/n): ");
             opcao = scan.nextLine();
-            if(opcao.equalsIgnoreCase("s")){
+
+            if (opcao.equalsIgnoreCase("s")) {
                 System.out.print("Digite a descrição do produto: ");
                 descricao = scan.nextLine();
 
                 System.out.print("Digite o valor do produto: ");
                 valor = scan.nextDouble();
+                scan.nextLine(); // Limpa o buffer
 
                 pedidos.add(new Pedido(descricao, valor));
-
-                System.out.println(pedidos.get(pedidos.size()-1).exibirDetalhesDoPedido());
-            } else if(opcao.equalsIgnoreCase("n")){
-                System.out.print("Saindo..");
-            } else{
-                System.err.println("Opção invalida!");
+                System.out.println(pedidos.get(pedidos.size() - 1).exibirDetalhesDoPedido());
+            } else if (opcao.equalsIgnoreCase("n")) {
+                System.out.println("Saindo...");
+                System.out.println(Pedido.gerarRelatorioGeral()); 
+            } else {
+                System.err.println("Opção inválida! Digite 's' ou 'n'.");
             }
-
-        } while (opcao.equalsIgnoreCase(opcao));
+        } while (!opcao.equalsIgnoreCase("n"));
 
 
     }
