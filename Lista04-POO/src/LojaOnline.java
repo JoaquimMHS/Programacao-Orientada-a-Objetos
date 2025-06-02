@@ -25,7 +25,7 @@ public class LojaOnline {
                 System.out.println(pedidos.get(pedidos.size() - 1).exibirDetalhesDoPedido());
             } else if (opcao.equalsIgnoreCase("n")) {
                 System.out.println("Saindo...");
-                System.out.println(Pedido.gerarRelatorioGeral()); 
+                System.out.println(Pedido.gerarRelatorioGeral());
             } else {
                 System.err.println("Opção inválida! Digite 's' ou 'n'.");
             }
