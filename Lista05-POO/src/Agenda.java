@@ -8,19 +8,19 @@ public class Agenda {
     public void adicionarContato(Contato contato){
         contatos.add(contato);
     }
-    public boolean removerContato(String contato){
+    public boolean removerContato(String nome){
         for( int i = 0; i < contatos.size(); i++){
-            if(contato == contatos.get(i)){
+            if(contatos.get(i).getNome().equalsIgnoreCase(nome)){
                 contatos.remove(i);
                 return true;
             }
         }
         return false;
     }
-    public String buscarContato(String nome){
+    public Contato buscarContato(String nome){
         for( int i = 0; i < contatos.size(); i++){
             if(contatos.get(i).getNome().equalsIgnoreCase(nome)){
-                return String.format("Nome: %s", contatos.get(i).getNome());
+                return contatos.get(i);
             }
         }
         return null;
