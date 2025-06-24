@@ -81,12 +81,54 @@ public class Main {
                     System.out.println("Total da folha de pagamento: R$ " + folhaPagamento);
                     break;
                 case 5:
+                    System.out.print("\nDigite o CPF do empregado: ");
+                    scan.nextLine();
+                    String cpfBusca = scan.nextLine();
+                    boolean encontrado = false;
 
 
+                    for(Empregado_Fixo emp : empregadosFixos){
+                        if(emp.getCpf().equals(cpfBusca)){
+                            System.out.println("\nEmpregado encontrado (salário fixo):");
+                            System.out.println("Nome: " + emp.getNome());
+                            System.out.println("CPF: " + emp.getCpf());
+                            System.out.println("Setor: " + emp.getSetor());
+                            System.out.println("Salário: R$ " + emp.getSalario());
+                            encontrado = true;
+                            break;
+                        }
+                    }
 
+
+                    if(!encontrado){
+                        for(Empregado_Comissão emp : empregadosComissao){
+                            if(emp.getCpf().equals(cpfBusca)){
+                                double salarioTotal = emp.getSalario() + (emp.getTotalVendas() * emp.getPercentualComissao());
+                                System.out.println("\nEmpregado encontrado (salário + comissão):");
+                                System.out.println("Nome: " + emp.getNome());
+                                System.out.println("CPF: " + emp.getCpf());
+                                System.out.println("Setor: " + emp.getSetor());
+                                System.out.println("Salário base: R$ " + emp.getSalario());
+                                System.out.println("Total de vendas: " + emp.getTotalVendas());
+                                System.out.println("Percentual de comissão: " + (emp.getPercentualComissao() * 100) + "%");
+                                System.out.println("Salário total: R$ " + salarioTotal);
+                                encontrado = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(!encontrado){
+                        System.out.println("\nNenhum empregado encontrado com o CPF informado.");
+                    }
+                    break;
+                case 0:
+                    System.out.println("\nSaindo do sistema...");
+                    break;
+                default:
+                    System.out.println("\nOpção inválida! Tente novamente.");
             }
-
-        }while(op != 0);
-
+        } while(op != 0);
+        
     }
 }
